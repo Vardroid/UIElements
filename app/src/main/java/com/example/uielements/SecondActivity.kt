@@ -1,6 +1,7 @@
 package com.example.uielements
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
@@ -11,6 +12,12 @@ import android.widget.TextView
 import java.util.*
 
 class SecondActivity : AppCompatActivity() {
+
+    companion object{
+        var age = ""
+        var birthday = ""
+        var phone = ""
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,5 +57,14 @@ class SecondActivity : AppCompatActivity() {
                 phoneTxt.visibility = View.INVISIBLE
             }
         }
+
+        findViewById<Button>(R.id.signUpBtn).setOnClickListener{signUp()}
+    }
+    private fun signUp(){
+        age = findViewById<TextView>(R.id.ageTxt).text.toString()
+        birthday = findViewById<TextView>(R.id.bdayTxt).text.toString()
+        phone = findViewById<TextView>(R.id.phoneTxt).text.toString()
+        val intent = Intent(this, ThirdActivity::class.java)
+        startActivity(intent)
     }
 }
